@@ -234,7 +234,7 @@ export default {
               class="text-gray-500 block text-sm"
             >
               Use the input box to enter your own array.<br>
-              Use comma seperate values between -1,000,000 and 1,000,000.
+              Use comma separate values between -1,000,000 and 1,000,000.
             </span>
             <div
               v-if="testCase === 'own'"

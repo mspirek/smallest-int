@@ -12,39 +12,53 @@ export default {
   }),
 
   methods: {
+    // This simply works thru the array. It is slightly more efficant when working with arrays
     smallestIntArray () {
+      // find the max
       const max = Math.max(...this.arr);
 
+      // return early if the max is negative
       if (max <= 0) {
         return 1;
       }
 
+      // interate through the array
       for (let i = 1; i <= max; i++) {
         if (!this.arr.includes(i)) {
           return i;
         }
       }
 
+      // if the smallestInt is outside the array
       return max + 1;
     },
+    // This method converts the array to a set
+    // This works more efficently on large set where the smallestInt can be late in the loop.
+    // This is why I chose to use this one.
     smallestInt () {
+      // find the max
       const max = Math.max(...this.arr);
 
+      // return early if the max is negative
       if (max <= 0) {
         return 1;
       }
 
+      // convert Array to Set
       const set = new Set(this.arr);
 
+      // interate through the Set
       for (let i = 1; i <= max; i++) {
         if (!set.has(i)) {
           return i;
         }
       }
 
+      // if the smallestInt is outside the array
       return max + 1;
     },
     submit () {
+      // Using native browser performance
       performance.mark('start');
       this.result = this.smallestInt();
       performance.mark('end');
@@ -77,9 +91,8 @@ export default {
           return;
         }
 
-        let customArray = this.customArray.replace(/\s/g, '');
-        customArray = customArray.split(',').map(x => +x);
-
+        // Normalize this data
+        const customArray = this.customArray.replace(/\s/g, '').split(',').map(x => +x);
         let outOfBounds = false;
 
         customArray.forEach((item) => {
@@ -119,7 +132,7 @@ export default {
           <input
             v-model="testCase"
             type="radio"
-            name="privacy_setting"
+            name="test-case"
             value="standard"
             class="h-4 w-4 mt-0.5 cursor-pointer text-blue-600 border-gray-300 focus:ring-blue-500"
           >
@@ -141,7 +154,7 @@ export default {
           <input
             v-model="testCase"
             type="radio"
-            name="privacy_setting"
+            name="test-case"
             value="negative"
             class="h-4 w-4 mt-0.5 cursor-pointer text-blue-600 border-gray-300 focus:ring-blue-500"
           >
@@ -163,7 +176,7 @@ export default {
           <input
             v-model="testCase"
             type="radio"
-            name="privacy_setting"
+            name="test-case"
             value="longest"
             class="h-4 w-4 mt-0.5 cursor-pointer text-blue-600 border-gray-300 focus:ring-blue-500"
           >
@@ -185,7 +198,7 @@ export default {
           <input
             v-model="testCase"
             type="radio"
-            name="privacy_setting"
+            name="test-case"
             value="worst"
             class="h-4 w-4 mt-0.5 cursor-pointer text-blue-600 border-gray-300 focus:ring-blue-500"
           >
@@ -235,10 +248,9 @@ export default {
               </label>
               <div class="mt-1">
                 <input
-                  id="array"
                   v-model="customArray"
                   type="text"
-                  name="array"
+                  name="test-case"
                   class="focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 border py-2 px-2 rounded-md w-full"
                   placeholder="1,2,3,4"
                 >

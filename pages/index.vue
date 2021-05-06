@@ -12,7 +12,7 @@ export default {
   }),
 
   methods: {
-    // This simply works thru the array. It is slightly more efficant when working with arrays
+    // This simply works thru the array. It is slightly more efficient when working with arrays
     smallestIntArray () {
       // find the max
       const max = Math.max(...this.arr);
@@ -22,7 +22,7 @@ export default {
         return 1;
       }
 
-      // interate through the array
+      // iterate through the array
       for (let i = 1; i <= max; i++) {
         if (!this.arr.includes(i)) {
           return i;
@@ -33,7 +33,7 @@ export default {
       return max + 1;
     },
     // This method converts the array to a set
-    // This works more efficently on large set where the smallestInt can be late in the loop.
+    // This works more efficiently on large set where the smallestInt can be late in the loop.
     // This is why I chose to use this one.
     smallestInt () {
       // find the max
@@ -47,7 +47,7 @@ export default {
       // convert Array to Set
       const set = new Set(this.arr);
 
-      // interate through the Set
+      // iterate through the Set
       for (let i = 1; i <= max; i++) {
         if (!set.has(i)) {
           return i;

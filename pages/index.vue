@@ -13,6 +13,7 @@ export default {
 
   methods: {
     // This simply works thru the array. It is slightly more efficient when working with arrays
+    // that are small because it doesn't have to do the set conversion
     smallestIntArray () {
       // find the max
       const max = Math.max(...this.arr);
